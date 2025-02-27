@@ -51,13 +51,13 @@ namespace ProjektProgramia.Pages
         protected global::System.Web.UI.WebControls.RequiredFieldValidator NameValidator;
 
         /// <summary>
-        /// AddressDropDown control.
+        /// CityTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AddressDropDown;
+        protected global::System.Web.UI.WebControls.TextBox CityTextBox;
 
         /// <summary>
         /// PostalCodeTextBox control.
@@ -67,15 +67,6 @@ namespace ProjektProgramia.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox PostalCodeTextBox;
-
-        /// <summary>
-        /// CityTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CityTextBox;
 
         /// <summary>
         /// StreetTextBox control.

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -22,12 +23,12 @@ namespace ProjektProgramia.Pages
 
             if (!IsPostBack)
             {
-                LoadAddresses();
                 LoadProducts();
 
                 if (userId.HasValue)
                 {
-                    LoadClient(userId.Value);
+                    LoadUser(userId.Value);
+                    
                     FormTitle.Text = "Edit User";
                 }
                 else
@@ -37,17 +38,19 @@ namespace ProjektProgramia.Pages
             }
         }
 
-        private void LoadAddresses()
+        private void LoadAddress(int id)
         {
-            AddressDropDown.DataSource = db.Addresses.Select(a => new
+            var address = db.Addresses.Find(id);
+
+            if (address != null)
             {
-                a.Id,
-                FullAddress = a.City + ", " + a.Street + " " + a.HouseNumber
-            }).ToList();
-            AddressDropDown.DataTextField = "FullAddress";
-            AddressDropDown.DataValueField = "Id";
-            AddressDropDown.DataBind();
+                PostalCodeTextBox.Text = address.PostalCode;
+                CityTextBox.Text = address.City;
+                StreetTextBox.Text = address.Street;
+                HouseNumberTextBox.Text = address.HouseNumber;
+            }
         }
+
 
         private void LoadProducts()
         {
@@ -57,39 +60,46 @@ namespace ProjektProgramia.Pages
             ProductDropDown.DataBind();
         }
 
-        private void LoadClient(int id)
+        private void LoadUser(int id)
         {
-            var client = db.Users.Find(id);
-            if (client != null)
+            var user = db.Users.Find(id);
+            if (user != null)
             {
-                NameTextBox.Text = client.Name;
-                AddressDropDown.SelectedValue = client.AddressId.ToString();
-                ProductDropDown.SelectedValue = client.ProductId.ToString();
+                NameTextBox.Text = user.Name;
+                ProductDropDown.SelectedValue = user.ProductId.ToString();
+                LoadAddress(user.AddressId);
             }
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             User user;
+            Address address;
 
             if (userId.HasValue)
             {
                 user = db.Users.Find(userId.Value);
+                address = db.Addresses.Find(user.AddressId);
             }
             else
             {
                 user = new User();
+                address = new Address();
                 db.Users.Add(user);
             }
+            address.PostalCode = PostalCodeTextBox.Text;
+            address.City = CityTextBox.Text;
+            address.Street = StreetTextBox.Text;
+            address.HouseNumber = HouseNumberTextBox.Text;
+            db.SaveChanges();
 
             user.Name = NameTextBox.Text;
-            user.AddressId = Convert.ToInt32(AddressDropDown.SelectedValue);
+            user.AddressId = address.Id;
             user.ProductId = Convert.ToInt32(ProductDropDown.SelectedValue);
 
             db.SaveChanges();
             Response.Redirect("/Default.aspx");
         }
-
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Default.aspx");
@@ -99,17 +109,7 @@ namespace ProjektProgramia.Pages
         {
             db.Dispose();
         }
-        protected void AddressDropDown_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(AddressDropDown.SelectedValue))
-            {
-                int id = Convert.ToInt32(AddressDropDown.SelectedValue);
-                Address address = db.Addresses.Find(id);
-                PostalCodeTextBox.Text = address.PostalCode;
-                CityTextBox.Text = address.City;
-                StreetTextBox.Text = address.Street;
-                HouseNumberTextBox.Text = address.HouseNumber;
-            }
-        }
+
+
     }
 }

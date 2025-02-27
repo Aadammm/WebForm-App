@@ -47,6 +47,7 @@ namespace ProjektProgramia.Pages
         {
             if (!decimal.TryParse(txtPrice.Text,out decimal price))
             {
+                
                 Response.Write("Must write number in correct format");
                 return;
             }

@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse">
-                        <a class="navbar-brand" href="Default.aspx">Home</a>
+                        <a class="navbar-brand" href="/Default.aspx">Home</a>
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link active" href="/Default.aspx">Users</a>
@@ -40,33 +40,28 @@
             </div>
 
             <div class="mb-3">
-                <label for="AddressDropDown" class="form-label">Choose Address</label>
-                <asp:DropDownList ID="AddressDropDown" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="AddressDropDown_SelectedIndexChanged">
-                    <asp:ListItem Text="" Value=""></asp:ListItem>
-
-                </asp:DropDownList>
             </div>
             <div class="mb-3">
-                <p class="form-text">Or add a new address:</p>
                 <div class="row">
-                    <div class="col-md-3">
-                        <label for="PostalCodeTextBox" class="form-label">Postal Code</label>
-                        <asp:TextBox ID="PostalCodeTextBox" runat="server" CssClass="form-control"></asp:TextBox>
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label for="CityTextBox" class="form-label">City</label>
                         <asp:TextBox ID="CityTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <label for="StreetTextBox" class="form-label">Street</label>
-                            <asp:TextBox ID="StreetTextBox" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="HouseNumberTextBox" class="form-label">House Number</label>
-                            <asp:TextBox ID="HouseNumberTextBox" runat="server" CssClass="form-control"></asp:TextBox>
-                        </div>
+                    <div class="col-md-2">
+                        <label for="PostalCodeTextBox" class="form-label">Postal Code</label>
+                        <asp:TextBox ID="PostalCodeTextBox" runat="server" CssClass="form-control"></asp:TextBox>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="StreetTextBox" class="form-label">Street</label>
+                        <asp:TextBox ID="StreetTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="HouseNumberTextBox" class="form-label">House Number</label>
+                        <asp:TextBox ID="HouseNumberTextBox" runat="server" CssClass="form-control"></asp:TextBox>
+                    </div>
+
                 </div>
             </div>
             <div class="mb-3">
