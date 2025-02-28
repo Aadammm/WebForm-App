@@ -12,6 +12,7 @@ namespace ProjektProgramia
     public partial class _Default : Page
     {
         ApplicationDbContext dbContext;
+
         public _Default()
         {
             dbContext = new ApplicationDbContext();
@@ -21,14 +22,15 @@ namespace ProjektProgramia
             if (!IsPostBack)
             {
                 BindClients();
+
             }
         }
         private void BindClients()
         {
             List<User> clients = dbContext.Users
                 .Include("Address")
-                .Include("Product")
-                .Where(c=>c.Address.Id==c.AddressId)
+                .Include("Orders")
+                .Where(c => c.Address.Id == c.AddressId)
                 .ToList();
 
             ClientsGridView.DataSource = clients;
@@ -36,16 +38,22 @@ namespace ProjektProgramia
         }
         protected void ClientsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "EditUser")
+            int userId = Convert.ToInt32(e.CommandArgument); // Získanie ID z riadka
+            if (e.CommandName == "ShowOrders")
             {
-                int clientId = Convert.ToInt32(e.CommandArgument);
-                Response.Redirect($"Pages/EditUser.aspx?id={clientId}");
+                Response.Redirect($"Pages/OrdersList.aspx?id={userId}");
+            }
+            else if (e.CommandName == "EditUser")
+            {
+                Response.Redirect($"Pages/EditUser.aspx?id={userId}");
+            }
+            else if (e.CommandName == "AddOrders")
+            {
+                Response.Redirect($"Pages/ProductsList.aspx?id={userId}");
             }
             else if (e.CommandName == "DeleteClient")
             {
-                int clientId = Convert.ToInt32(e.CommandArgument);
-
-                var client = dbContext.Users.Find(clientId);
+                var client = dbContext.Users.Find(userId);
                 if (client != null)
                 {
                     dbContext.Users.Remove(client);
@@ -53,6 +61,7 @@ namespace ProjektProgramia
                     BindClients();
                 }
             }
+
         }
 
         protected void AddNewClientButton_Click(object sender, EventArgs e)
@@ -64,6 +73,8 @@ namespace ProjektProgramia
         {
             dbContext.Dispose();
         }
+
+
 
     }
 }

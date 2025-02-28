@@ -25,10 +25,12 @@ namespace ProjektProgramia.Pages
                 {
                     LoadProducts(productId.Value);
                     FormTitle.Text = "Edit product";
+                   Title = "Edit product";
                 }
                 else
                 {
                     FormTitle.Text = "New product";
+                    Title = "New product";
                 }
             }
         }

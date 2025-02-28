@@ -17,26 +17,37 @@
             </div>
         </nav>
         <h2>Products List</h2>
-         <asp:GridView ID="ProductsGridView" runat="server" AutoGenerateColumns="False"
-      CssClass="table table-striped" OnRowCommand="ProductsGridView_RowCommand">
-      <Columns>
-          <asp:BoundField DataField="Id" HeaderText="ID" />
-          <asp:BoundField DataField="Title" HeaderText="Title" />
-          <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
-          <asp:TemplateField HeaderText="Akcie">
-              <ItemTemplate>
-                  <asp:Button ID="EditButton" runat="server" Text="Edit"
-                      CommandName="EditProduct" CommandArgument='<%# Eval("Id") %>'
-                      CssClass="btn btn-warning btn-sm" />
-                  <asp:Button ID="DeleteButton" runat="server" Text="Remove"
-                      CommandName="DeleteProduct" CommandArgument='<%# Eval("Id") %>'
-                      CssClass="btn btn-danger btn-sm"
-                      OnClientClick="return confirm('Really want remove this product?');" />
-              </ItemTemplate>
-          </asp:TemplateField>
-      </Columns>
-  </asp:GridView>
-  <asp:Button ID="Button1" runat="server" Text="Add new product"
-      CssClass="btn btn-primary mb-3" OnClick="AddNewProductButton_Click" />
+        <asp:GridView ID="ProductsGridView" runat="server" AutoGenerateColumns="False"
+            CssClass="table table-striped" OnRowCommand="ProductsGridView_RowCommand">
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="ID" />
+                <asp:BoundField DataField="Title" HeaderText="Title" />
+                <asp:BoundField DataField="Price" HeaderText="Price" DataFormatString="{0:C}" />
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="MakeOrderButton" runat="server" Text="Make Order"
+                            CommandName="MakeOrder" CommandArgument='<%# Eval("Id") %>'
+                            CssClass="btn btn-secondary btn-sm" />
+
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="EditButton" runat="server" Text="Edit"
+                            CommandName="EditProduct" CommandArgument='<%# Eval("Id") %>'
+                            CssClass="btn btn-warning btn-sm" />
+                        <asp:Button ID="DeleteButton" runat="server" Text="Remove"
+                            CommandName="DeleteProduct" CommandArgument='<%# Eval("Id") %>'
+                            CssClass="btn btn-danger btn-sm"
+                            OnClientClick="return confirm('Really want remove this product?');" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:Button ID="NewProductButton" runat="server" Text="Add new product"
+            CssClass="btn btn-primary mb-3" OnClick="AddNewProductButton_Click" Visible="true" />
     </div>
+    <div id="alertBox" class="alert alert-success" role="alert" runat="server" visible="false" />
 </asp:Content>

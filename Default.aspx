@@ -31,11 +31,19 @@
                         <%# Eval("Address.City") %>, <%# Eval("Address.PostalCode") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Product">
+                <asp:TemplateField HeaderText="Orders">
                     <ItemTemplate>
-                        <%# Eval("Product.Title") %> (<%# Eval("Product.Price", "{0:C}") %>)
+                        <asp:Button ID="OrdersButton" runat="server"
+                            Text='<%# Eval("Orders.Count")+" orders "  %>'
+                            CommandName="ShowOrders"
+                            CssClass="btn btn-secondary btn-sm" CommandArgument='<%# Eval("Id") %>' />                   
+                        <asp:Button ID="AddOrdersButton" runat="server"
+                            Text="New Order"
+                            CommandName="AddOrders"
+                            CssClass="btn btn-secondary btn-sm" CommandArgument='<%# Eval("Id") %>' />
                     </ItemTemplate>
                 </asp:TemplateField>
+
                 <asp:TemplateField>
                     <ItemTemplate>
                         <asp:Button ID="EditButton" runat="server" Text="Edit"

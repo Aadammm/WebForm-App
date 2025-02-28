@@ -8,8 +8,8 @@ using System.Web.UI.WebControls;
 
 namespace ProjektProgramia.Pages
 {
-	public partial class AddressList : System.Web.UI.Page
-	{
+    public partial class AddressList : System.Web.UI.Page
+    {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         protected void Page_Load(object sender, EventArgs e)
@@ -41,8 +41,16 @@ namespace ProjektProgramia.Pages
                 var address = db.Addresses.Find(addressId);
                 if (address != null)
                 {
-                    db.Addresses.Remove(address);
-                    db.SaveChanges();
+                    try
+                    {
+                        db.Addresses.Remove(address);
+                        db.SaveChanges();
+                    }
+                    catch(Exception ex)
+                    {
+                        alertBox.InnerText = "You can remove address belongs user";
+                        alertBox.Visible = true;
+                    }
                     BindAddresses();
                 }
             }

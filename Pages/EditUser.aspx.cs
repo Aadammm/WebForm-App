@@ -1,6 +1,7 @@
 ﻿using ProjektProgramia.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -19,6 +20,7 @@ namespace ProjektProgramia.Pages
             if (Request.QueryString["id"] != null)
             {
                 userId = Convert.ToInt32(Request.QueryString["id"]);
+                
             }
 
             if (!IsPostBack)
@@ -28,12 +30,14 @@ namespace ProjektProgramia.Pages
                 if (userId.HasValue)
                 {
                     LoadUser(userId.Value);
-                    
+
                     FormTitle.Text = "Edit User";
+                    Title = "Edit User";
                 }
                 else
                 {
                     FormTitle.Text = "New User";
+                    Title = "New User";
                 }
             }
         }
@@ -66,7 +70,6 @@ namespace ProjektProgramia.Pages
             if (user != null)
             {
                 NameTextBox.Text = user.Name;
-                ProductDropDown.SelectedValue = user.ProductId.ToString();
                 LoadAddress(user.AddressId);
             }
         }
@@ -80,22 +83,27 @@ namespace ProjektProgramia.Pages
             {
                 user = db.Users.Find(userId.Value);
                 address = db.Addresses.Find(user.AddressId);
+                address.PostalCode = PostalCodeTextBox.Text;
+                address.City = CityTextBox.Text;
+                address.Street = StreetTextBox.Text;
+                address.HouseNumber = HouseNumberTextBox.Text;
             }
             else
             {
                 user = new User();
-                address = new Address();
+                address = new Address()
+                {
+                    PostalCode = PostalCodeTextBox.Text,
+                    City = CityTextBox.Text,
+                    Street = StreetTextBox.Text,
+                    HouseNumber = HouseNumberTextBox.Text
+                };
+                db.Addresses.Add(address);
+                db.SaveChanges();
                 db.Users.Add(user);
             }
-            address.PostalCode = PostalCodeTextBox.Text;
-            address.City = CityTextBox.Text;
-            address.Street = StreetTextBox.Text;
-            address.HouseNumber = HouseNumberTextBox.Text;
-            db.SaveChanges();
-
             user.Name = NameTextBox.Text;
             user.AddressId = address.Id;
-            user.ProductId = Convert.ToInt32(ProductDropDown.SelectedValue);
 
             db.SaveChanges();
             Response.Redirect("/Default.aspx");

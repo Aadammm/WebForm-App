@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container mt-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <div class="container-fluid">               
+            <div class="container-fluid">
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -39,6 +39,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        <div id="alertBox" class="alert alert-danger" role="alert" runat="server" visible="false" />
         <asp:Button ID="AddNewAddressButton" runat="server" Text="Add new address"
             CssClass="btn btn-primary mb-3" OnClick="AddNewAddressButton_Click" />
     </div>

@@ -11,34 +11,25 @@ namespace ProjektProgramia.Pages
 {
 
 
-    public partial class ProductsList
+    public partial class OrdersList
     {
 
         /// <summary>
-        /// ProductsGridView control.
+        /// OrdersListView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProductsGridView;
+        protected global::System.Web.UI.WebControls.ListView OrdersListView;
 
         /// <summary>
-        /// NewProductButton control.
+        /// TotalAmountLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button NewProductButton;
-
-        /// <summary>
-        /// alertBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertBox;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl TotalAmountLabel;
     }
 }

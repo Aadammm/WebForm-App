@@ -26,10 +26,12 @@ namespace ProjektProgramia.Pages
                 {
                     LoadAdress(adressId.Value);
                     FormTitle.Text = "Edit Address";
+                    Title = "Edit Address";
                 }
                 else
                 {
                     FormTitle.Text = "New Address";
+                    Title = "New Address";
                 }
             }
         }

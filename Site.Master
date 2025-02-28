@@ -12,7 +12,7 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -59,7 +59,9 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+            <p>&copy; 
+                <span id="datetime">
+                </span> - My ASP.NET Application</p>
             </footer>
         </div>
     </form>
@@ -67,4 +69,20 @@
         <%: Scripts.Render("~/Scripts/bootstrap.js") %>
     </asp:PlaceHolder>
 </body>
+<script>
+    function aktualizujCas() {
+        const now = new Date();
+        const formattedDateTime = now.toLocaleString("sk-SK", {
+            hour: "2-digit",
+            minute: "2-digit",
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        }).replace(",", ""); 
+
+        document.getElementById("datetime").textContent = formattedDateTime;
+    }
+    setInterval(aktualizujCas, 1000);
+    aktualizujCas(); 
+</script>
 </html>
