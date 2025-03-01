@@ -41,7 +41,7 @@ namespace ProjektProgramia.Pages
         protected void Page_Init(object sender, EventArgs eventArgs)
         {
             productService = new ProductService(new ProductRepository(),
-                                                new OrderRepository());
+                             new OrderService(new OrderRepository()));
         }
 
         private void LoadProducts(int productId)

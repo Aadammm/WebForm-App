@@ -19,7 +19,7 @@
         </nav>
 
 
-
+         <h2>Users List</h2>
         <asp:GridView ID="ClientsGridView" runat="server" AutoGenerateColumns="False"
             CssClass="table table-striped" OnRowCommand="ClientsGridView_RowCommand">
             <Columns>
