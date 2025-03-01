@@ -27,7 +27,7 @@ namespace ProjektProgramia.Pages
             {
                 if (productId.HasValue)
                 {
-                    LoadProducts(productId.Value);
+                    LoadProduct(productId.Value);
                     FormTitle.Text = "Edit product";
                     Title = "Edit product";
                 }
@@ -44,7 +44,7 @@ namespace ProjektProgramia.Pages
                              new OrderService(new OrderRepository()));
         }
 
-        private void LoadProducts(int productId)
+        private void LoadProduct(int productId)
         {
             var product = productService.FindProduct(productId);
             if (product != null)
@@ -59,7 +59,6 @@ namespace ProjektProgramia.Pages
         {
             if (!decimal.TryParse(txtPrice.Text, out decimal price))
             {
-
                 Response.Write("Must write number in correct format");
                 return;
             }
@@ -67,15 +66,18 @@ namespace ProjektProgramia.Pages
             if (productId.HasValue)
             {
                 product = productService.FindProduct(productId.Value);
+                product.Title = txtTitle.Text;
+                product.Price = price;
             }
             else
             {
-                product = new Product();
+                product = new Product()
+                {
+                    Title = txtTitle.Text,
+                    Price = price
+                };
                 productService.AddProducts(product);
             }
-
-            product.Title = txtTitle.Text;
-            product.Price = price;
             bool success = productService.SaveChanges();
             if (success)
             {
