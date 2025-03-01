@@ -1,17 +1,20 @@
 ﻿using Newtonsoft.Json.Linq;
 using ProjektProgramia.Services;
+using ProjektProgramia.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjektProgramia.DataAccess.InterfaceRepository;
+using ProjektProgramia.DataAccess;
 
 namespace ProjektProgramia.Pages
 {
     public partial class EditAddress : System.Web.UI.Page
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private AddressService addressService;
         private int? adressId = null;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,10 +38,14 @@ namespace ProjektProgramia.Pages
                 }
             }
         }
+        protected void Page_Init(object sender, EventArgs eventArgs)
+        {
+            addressService = new AddressService(new AddressRepository());
+        }
 
         private void LoadAdress(int value)
         {
-            var address = db.Addresses.Find(value);
+            var address = addressService.FindAddress(value);
             if (address != null)
             {
                 txtPostalCode.Text = address.PostalCode;
@@ -53,21 +60,22 @@ namespace ProjektProgramia.Pages
             Address address;
             if (adressId.HasValue)
             {
-                address = db.Addresses.Find(adressId.Value);
+                address = addressService.FindAddress(adressId.Value);
             }
             else
             {
                 address = new Address();
-                db.Addresses.Add(address);
+                addressService.AddAddress(address);
             }
-
             address.PostalCode = txtPostalCode.Text;
             address.City = txtCity.Text;
             address.Street = txtStreet.Text;
             address.HouseNumber = txtHouseNumber.Text;
-            db.SaveChanges();
-
+            bool succes = addressService.SaveChanges();
+            if (succes)
+            {
             Response.Write("Address added successfully!");
+            }
             Response.Redirect("AddressList.aspx");
 
         }

@@ -48,6 +48,7 @@
         </asp:GridView>
         <asp:Button ID="NewProductButton" runat="server" Text="Add new product"
             CssClass="btn btn-primary mb-3" OnClick="AddNewProductButton_Click" Visible="true" />
+        <div id="alertBoxSuccess" class="alert alert-success" role="alert" runat="server" visible="false" />
+        <div id="alertBoxRemove" class="alert alert-danger" role="alert" runat="server" visible="false" />
     </div>
-    <div id="alertBox" class="alert alert-success" role="alert" runat="server" visible="false" />
 </asp:Content>

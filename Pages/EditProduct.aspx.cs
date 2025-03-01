@@ -1,4 +1,5 @@
 ﻿using ProjektProgramia.Services;
+using ProjektProgramia.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,6 +42,7 @@ namespace ProjektProgramia.Pages
             if (product != null)
             {
                 txtTitle.Text = product.Title;
+                txtDescription.Text = product.Description;
                 txtPrice.Text = product.Price.ToString();
             }
         }

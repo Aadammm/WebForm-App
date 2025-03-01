@@ -227,6 +227,14 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AddressRepository.cs" />
+    <Compile Include="DataAccess\InterfaceRepository\IAddressRepository.cs" />
+    <Compile Include="DataAccess\InterfaceRepository\IOrderRepository.cs" />
+    <Compile Include="DataAccess\InterfaceRepository\IProductRepository.cs" />
+    <Compile Include="DataAccess\InterfaceRepository\IUserRepository.cs" />
+    <Compile Include="DataAccess\OrderRepository.cs" />
+    <Compile Include="DataAccess\ProductRepository.cs" />
+    <Compile Include="DataAccess\UserRepository.cs" />
     <Compile Include="Migrations\202502280855380_InitCreate.cs" />
     <Compile Include="Migrations\202502280855380_InitCreate.Designer.cs">
       <DependentUpon>202502280855380_InitCreate.cs</DependentUpon>
@@ -308,8 +316,16 @@
       <DependentUpon>ProductsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ApplicationDbContext.cs" />
-    <Compile Include="Services\DapperDb.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="DataAccess\DatabaseConnection\ApplicationDbContext.cs" />
+    <Compile Include="DataAccess\DatabaseConnection\DapperDb.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Services\AddressService.cs" />
+    <Compile Include="Services\OrderService.cs" />
+    <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -335,7 +351,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
-    <Folder Include="Services\Interface\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

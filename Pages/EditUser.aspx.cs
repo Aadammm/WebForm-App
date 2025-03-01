@@ -1,4 +1,5 @@
 ﻿using ProjektProgramia.Services;
+using ProjektProgramia.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -7,12 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjektProgramia.DataAccess;
+using ProjektProgramia.DataAccess.InterfaceRepository;
 
 namespace ProjektProgramia.Pages
 {
     public partial class EditUser : System.Web.UI.Page
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private UserService userService;
         private int? userId = null;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -20,13 +23,10 @@ namespace ProjektProgramia.Pages
             if (Request.QueryString["id"] != null)
             {
                 userId = Convert.ToInt32(Request.QueryString["id"]);
-                
             }
 
             if (!IsPostBack)
             {
-                LoadProducts();
-
                 if (userId.HasValue)
                 {
                     LoadUser(userId.Value);
@@ -41,36 +41,21 @@ namespace ProjektProgramia.Pages
                 }
             }
         }
-
-        private void LoadAddress(int id)
+        protected void Page_Init(object sender, EventArgs e)
         {
-            var address = db.Addresses.Find(id);
-
-            if (address != null)
-            {
-                PostalCodeTextBox.Text = address.PostalCode;
-                CityTextBox.Text = address.City;
-                StreetTextBox.Text = address.Street;
-                HouseNumberTextBox.Text = address.HouseNumber;
-            }
-        }
-
-
-        private void LoadProducts()
-        {
-            ProductDropDown.DataSource = db.Products.ToList();
-            ProductDropDown.DataTextField = "Title";
-            ProductDropDown.DataValueField = "Id";
-            ProductDropDown.DataBind();
+            userService = new UserService(new UserRepository());
         }
 
         private void LoadUser(int id)
         {
-            var user = db.Users.Find(id);
+            var user = userService.FindUser(id);
             if (user != null)
             {
                 NameTextBox.Text = user.Name;
-                LoadAddress(user.AddressId);
+                PostalCodeTextBox.Text = user.Address.PostalCode;
+                CityTextBox.Text = user.Address.City;
+                StreetTextBox.Text = user.Address.Street;
+                HouseNumberTextBox.Text = user.Address.HouseNumber;
             }
         }
 
@@ -81,43 +66,32 @@ namespace ProjektProgramia.Pages
 
             if (userId.HasValue)
             {
-                user = db.Users.Find(userId.Value);
-                address = db.Addresses.Find(user.AddressId);
-                address.PostalCode = PostalCodeTextBox.Text;
-                address.City = CityTextBox.Text;
-                address.Street = StreetTextBox.Text;
-                address.HouseNumber = HouseNumberTextBox.Text;
+                user = userService.FindUser(userId.Value);                
+                user.Address.PostalCode = PostalCodeTextBox.Text;
+                user.Address.City = CityTextBox.Text;
+                user.Address.Street = StreetTextBox.Text;
+                user.Address.HouseNumber = HouseNumberTextBox.Text;
             }
             else
             {
                 user = new User();
-                address = new Address()
+                user.Address = new Address
                 {
                     PostalCode = PostalCodeTextBox.Text,
                     City = CityTextBox.Text,
                     Street = StreetTextBox.Text,
                     HouseNumber = HouseNumberTextBox.Text
                 };
-                db.Addresses.Add(address);
-                db.SaveChanges();
-                db.Users.Add(user);
+                userService.AddUser(user);
             }
             user.Name = NameTextBox.Text;
-            user.AddressId = address.Id;
 
-            db.SaveChanges();
+            userService.SaveChanges();
             Response.Redirect("/Default.aspx");
         }
         protected void CancelButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Default.aspx");
         }
-
-        protected void Page_Unload(object sender, EventArgs e)
-        {
-            db.Dispose();
-        }
-
-
     }
 }

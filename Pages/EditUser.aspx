@@ -19,9 +19,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="AddressList.aspx">Addresses</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="ProductsList.aspx">Products</a>
-                            </li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -63,13 +61,7 @@
 
                 </div>
             </div>
-            <div class="mb-3">
-                <label for="ProductDropDown" class="form-label">Product</label>
-                <asp:DropDownList ID="ProductDropDown" runat="server" CssClass="form-select">
-                    <asp:ListItem Text="" Value=""></asp:ListItem>
-
-                </asp:DropDownList>
-            </div>
+            
 
             <div>
                 <asp:Button ID="SaveButton" runat="server" Text="Save"

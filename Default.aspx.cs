@@ -1,4 +1,5 @@
 ﻿using ProjektProgramia.Services;
+using ProjektProgramia.Models;
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -6,32 +7,27 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjektProgramia.DataAccess;
 
 namespace ProjektProgramia
 {
     public partial class _Default : Page
     {
-        ApplicationDbContext dbContext;
-
-        public _Default()
-        {
-            dbContext = new ApplicationDbContext();
-        }
+        private UserService userService;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BindClients();
-
             }
+        }
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            userService = new UserService(new UserRepository());
         }
         private void BindClients()
         {
-            List<User> clients = dbContext.Users
-                .Include("Address")
-                .Include("Orders")
-                .Where(c => c.Address.Id == c.AddressId)
-                .ToList();
+            List<User> clients = userService.GetUsers().ToList();
 
             ClientsGridView.DataSource = clients;
             ClientsGridView.DataBind();
@@ -53,28 +49,19 @@ namespace ProjektProgramia
             }
             else if (e.CommandName == "DeleteClient")
             {
-                var client = dbContext.Users.Find(userId);
-                if (client != null)
+                bool success = userService.RemoveUser(userId);
+                if (!success)
                 {
-                    dbContext.Users.Remove(client);
-                    dbContext.SaveChanges();
-                    BindClients();
+                    alertBoxRemove.InnerText = "You can remove product which is in order";
+                    alertBoxRemove.Visible = true;
                 }
+                BindClients();
             }
-
         }
 
         protected void AddNewClientButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("Pages/EditUser.aspx");
         }
-
-        protected void Page_Unload(object sender, EventArgs e)
-        {
-            dbContext.Dispose();
-        }
-
-
-
     }
 }

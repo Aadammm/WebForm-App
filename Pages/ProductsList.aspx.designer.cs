@@ -33,12 +33,21 @@ namespace ProjektProgramia.Pages
         protected global::System.Web.UI.WebControls.Button NewProductButton;
 
         /// <summary>
-        /// alertBox control.
+        /// alertBoxSuccess control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertBox;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertBoxSuccess;
+
+        /// <summary>
+        /// alertBoxRemove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl alertBoxRemove;
     }
 }

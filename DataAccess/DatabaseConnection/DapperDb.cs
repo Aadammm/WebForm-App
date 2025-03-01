@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using ProjektProgramia.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

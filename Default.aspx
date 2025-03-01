@@ -36,7 +36,7 @@
                         <asp:Button ID="OrdersButton" runat="server"
                             Text='<%# Eval("Orders.Count")+" orders "  %>'
                             CommandName="ShowOrders"
-                            CssClass="btn btn-secondary btn-sm" CommandArgument='<%# Eval("Id") %>' />                   
+                            CssClass="btn btn-secondary btn-sm" CommandArgument='<%# Eval("Id") %>' />
                         <asp:Button ID="AddOrdersButton" runat="server"
                             Text="New Order"
                             CommandName="AddOrders"
@@ -59,5 +59,7 @@
         </asp:GridView>
         <asp:Button ID="AddNewClientButton" runat="server" Text="Create New User"
             CssClass="btn btn-primary mb-3" OnClick="AddNewClientButton_Click" />
+        <div id="alertBoxSuccess" class="alert alert-success" role="alert" runat="server" visible="false" />
+        <div id="alertBoxRemove" class="alert alert-danger" role="alert" runat="server" visible="false" />
     </div>
 </asp:Content>

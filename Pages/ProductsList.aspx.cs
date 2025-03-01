@@ -1,43 +1,46 @@
 ﻿using ProjektProgramia.Services;
+using ProjektProgramia.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjektProgramia.DataAccess.InterfaceRepository;
+using ProjektProgramia.DataAccess;
 
 namespace ProjektProgramia.Pages
 {
     public partial class ProductsList : System.Web.UI.Page
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private List<Product> products;
+        private ProductService productService;
         private int userId = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             ProductsGridView.Columns[3].Visible = false;
+            ProductsGridView.Columns[4].Visible = true;
             if (Request.QueryString["id"] != null)
             {
                 userId = Convert.ToInt32(Request.QueryString["id"]);
                 NewProductButton.Visible = false;
                 ProductsGridView.Columns[3].Visible = true;
-
+                ProductsGridView.Columns[4].Visible = false;
             }
             if (!IsPostBack)
             {
-
                 BindProducts();
             }
         }
-
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            productService = new ProductService(new ProductRepository(), new OrderRepository());
+        }
         private void BindProducts()
         {
-            products = db.Products.ToList();
+            var products = productService.GetProducts().ToList();
             ProductsGridView.DataSource = products;
             ProductsGridView.DataBind();
         }
-
         protected void ProductsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int productId = Convert.ToInt32(e.CommandArgument);
@@ -48,38 +51,28 @@ namespace ProjektProgramia.Pages
             }
             else if (e.CommandName == "MakeOrder" && userId != 0)
             {
-
-                Product product = db.Products.Find(productId);
-                Order newOrder = new Order()
+                bool success = productService.MakeOrder(userId, productId);
+                if (success)
                 {
-                    Product = product,
-                    UserId = userId
-                };
-                db.Orders.Add(newOrder);
-                db.SaveChanges();
-                alertBox.InnerText = "Product added successfully!";
-                alertBox.Visible = true;
+                    alertBoxSuccess.InnerText = "Product added successfully!";
+                    alertBoxSuccess.Visible = true;
+                }
             }
             else if (e.CommandName == "DeleteProduct")
             {
-                var product = db.Products.Find(productId);
-                if (product != null)
+                bool success = productService.RemoveProduct(productId);
+                if (!success)
                 {
-                    db.Products.Remove(product);
-                    db.SaveChanges();
-                    BindProducts();
+                    alertBoxRemove.InnerText = "You can not remove product which is in order";
+                    alertBoxRemove.Visible = true;
                 }
+                BindProducts();
             }
         }
 
         protected void AddNewProductButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("EditProduct.aspx");
-        }
-
-        protected void Page_Unload(object sender, EventArgs e)
-        {
-            db.Dispose();
         }
     }
 }

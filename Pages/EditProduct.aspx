@@ -36,14 +36,14 @@
                         ControlToValidate="txtTitle" ErrorMessage="Can not be empty"
                         CssClass="text-danger" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
-
+                <div class="mb-3">
+                    <label for="txtDescription" class="form-label">Description</label>
+                    <asp:TextBox ID="txtDescription" runat="server" CssClass="form-control"></asp:TextBox>
+                </div>
                 <div class="mb-3">
                     <label for="txtPrice" class="form-label">Price</label>
                     <asp:TextBox ID="txtPrice" runat="server" CssClass="form-control"></asp:TextBox>
-
-                 
                 </div>
-
 
                 <div>
                     <asp:Button ID="btnAddAddress" runat="server" Text="Save"
@@ -52,7 +52,6 @@
                         CssClass="btn btn-secondary" OnClick="CancelButton_Click" CausesValidation="false" />
                 </div>
             </div>
-        </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
