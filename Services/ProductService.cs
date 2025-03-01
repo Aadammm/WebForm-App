@@ -11,11 +11,11 @@ namespace ProjektProgramia.Services
     public class ProductService
     {
         private readonly IProductRepository productRepository;
-        private readonly IOrderRepository orderRepository;
-        public ProductService(IProductRepository productRepository, IOrderRepository orderRepository)
+        private readonly OrderService orderService;
+        public ProductService(IProductRepository productRepository, OrderService orderService)
         {
             this.productRepository = productRepository;
-            this.orderRepository = orderRepository;
+            this.orderService = orderService;
         }
         public IEnumerable<Product> GetProducts()
         {
@@ -32,13 +32,27 @@ namespace ProjektProgramia.Services
         }
         public bool MakeOrder(int userId, int productId)
         {
-            Order newOrder = new Order()
-            {
-                ProductId = productId,
-                UserId = userId
-            };
-            return orderRepository.AddOrder(newOrder);
+           return orderService.MakeOrder(userId, productId);
         }
 
+        public  Product FindProduct(int productId)
+        {
+            return productRepository.FindProduct(productId);
+        }
+
+        public bool AddProducts(Product product)
+        {
+            if (product != null)
+            {
+                productRepository.AddProduct(product);
+                return SaveChanges();
+            }
+            return false;
+        }
+
+        public bool SaveChanges()
+        {
+            return productRepository.SaveChanges();
+        }
     }
 }

@@ -6,10 +6,12 @@ namespace ProjektProgramia.Models
     {
         [Key]
         public int Id { get; set; }
-        public string PostalCode { get; set; }
+        public int PostalCode { get; set; }
+        [MaxLength(50)]
         public string City { get; set; }
+        [MaxLength(50)]
         public string Street { get; set; }
-        public string HouseNumber { get; set; }
+        public int HouseNumber { get; set; }
     }
 
 

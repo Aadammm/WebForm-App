@@ -3,6 +3,7 @@ using ProjektProgramia.Models;
 using ProjektProgramia.Services;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
@@ -10,11 +11,12 @@ namespace ProjektProgramia.DataAccess
 {
     public class OrderRepository : IOrderRepository
     {
-        ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
         public OrderRepository()
         {
             dbContext = new ApplicationDbContext();
         }
+
         public bool AddOrder(Order order)
         {
             if (order != null)
@@ -23,6 +25,11 @@ namespace ProjektProgramia.DataAccess
                 return SaveChanges();
             }
             return false;
+        }
+
+        public Product FindProduct(int productId)
+        {
+            return dbContext.Products.Find(productId);
         }
 
         public IEnumerable<Order> GetOrders()

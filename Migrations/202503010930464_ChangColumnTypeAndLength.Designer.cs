@@ -7,13 +7,13 @@ namespace ProjektProgramia.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.5.1")]
-    public sealed partial class InitCreate : IMigrationMetadata
+    public sealed partial class ChangColumnTypeAndLength : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ChangColumnTypeAndLength));
         
         string IMigrationMetadata.Id
         {
-            get { return "202502280855380_InitCreate"; }
+            get { return "202503010930464_ChangColumnTypeAndLength"; }
         }
         
         string IMigrationMetadata.Source

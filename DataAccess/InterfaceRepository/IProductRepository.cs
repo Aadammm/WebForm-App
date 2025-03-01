@@ -11,8 +11,5 @@ namespace ProjektProgramia.DataAccess.InterfaceRepository
         IEnumerable<Product> GetProducts();
         bool SaveChanges();
         bool RemoveProduct(Product product);
-
-
-
     }
 }

@@ -39,7 +39,6 @@ namespace ProjektProgramia.Services
         {
             return userRepository.SaveChanges();
         }
-
         public bool AddUser(User user)
         {
             return userRepository.AddUser(user);

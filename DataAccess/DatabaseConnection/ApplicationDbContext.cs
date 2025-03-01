@@ -14,8 +14,7 @@ namespace ProjektProgramia.Services
 
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //// Vzťah medzi User a Product
+        {        
             modelBuilder.Entity<User>()
               .HasRequired(u => u.Address)        // kazdy user ma addressu
               .WithMany()                        // Jedna adresa môže mať viacero používateľov

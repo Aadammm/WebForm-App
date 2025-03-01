@@ -10,7 +10,7 @@ namespace ProjektProgramia.DataAccess
 {
     public class UserRepository : IUserRepository
     {
-        ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
         public UserRepository()
         {
             dbContext = new ApplicationDbContext();
@@ -55,7 +55,6 @@ namespace ProjektProgramia.DataAccess
                 return false;
             }
         }
-
         public bool SaveChanges()
         {
             return dbContext.SaveChanges() > 0;

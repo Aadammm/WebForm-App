@@ -48,10 +48,10 @@ namespace ProjektProgramia.Pages
             var address = addressService.FindAddress(value);
             if (address != null)
             {
-                txtPostalCode.Text = address.PostalCode;
+                txtPostalCode.Text = address.PostalCode.ToString();
                 txtCity.Text = address.City;
                 txtStreet.Text = address.Street;
-                txtHouseNumber.Text = address.HouseNumber;
+                txtHouseNumber.Text = address.HouseNumber.ToString();
             }
         }
 
@@ -67,10 +67,10 @@ namespace ProjektProgramia.Pages
                 address = new Address();
                 addressService.AddAddress(address);
             }
-            address.PostalCode = txtPostalCode.Text;
+            address.PostalCode = int.Parse(txtPostalCode.Text);
             address.City = txtCity.Text;
             address.Street = txtStreet.Text;
-            address.HouseNumber = txtHouseNumber.Text;
+            address.HouseNumber =int.Parse( txtHouseNumber.Text);
             bool succes = addressService.SaveChanges();
             if (succes)
             {

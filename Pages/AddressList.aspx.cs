@@ -11,7 +11,7 @@ namespace ProjektProgramia.Pages
 {
     public partial class AddressList : System.Web.UI.Page
     {
-        AddressService addressService;
+        private AddressService addressService;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -20,6 +20,7 @@ namespace ProjektProgramia.Pages
                 BindAddresses();
             }
         }
+
         protected void Page_Init(object sender, EventArgs eventArgs)
         {
             addressService = new AddressService(new AddressRepository());
@@ -50,7 +51,6 @@ namespace ProjektProgramia.Pages
                 }
             }
         }
-
 
         protected void AddNewAddressButton_Click(object sender, EventArgs e)
         {

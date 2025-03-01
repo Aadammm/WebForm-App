@@ -33,14 +33,17 @@ namespace ProjektProgramia.Pages
         }
         protected void Page_Init(object sender, EventArgs e)
         {
-            productService = new ProductService(new ProductRepository(), new OrderRepository());
+            productService = new ProductService(new ProductRepository()
+                            ,new OrderService(new OrderRepository()));
         }
+
         private void BindProducts()
         {
             var products = productService.GetProducts().ToList();
             ProductsGridView.DataSource = products;
             ProductsGridView.DataBind();
         }
+
         protected void ProductsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int productId = Convert.ToInt32(e.CommandArgument);

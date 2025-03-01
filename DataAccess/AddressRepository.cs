@@ -10,7 +10,7 @@ namespace ProjektProgramia.DataAccess
 {
     public class AddressRepository : IAddressRepository
     {
-       private readonly ApplicationDbContext dbContext;
+        private readonly ApplicationDbContext dbContext;
         public AddressRepository()
         {
             dbContext = new ApplicationDbContext();
@@ -24,7 +24,6 @@ namespace ProjektProgramia.DataAccess
             }
             return false;
         }
-
         public Address FindAddress(int addressId)
         {
             if (addressId != 0)
@@ -33,7 +32,6 @@ namespace ProjektProgramia.DataAccess
             }
             return null;
         }
-
         public IEnumerable<Address> GetAddresses()
         {
             return dbContext.Addresses;
@@ -50,7 +48,7 @@ namespace ProjektProgramia.DataAccess
             {
                 return false;
             }
-        }                     
+        }
         public bool SaveChanges()
         {
             return dbContext.SaveChanges() > 0;

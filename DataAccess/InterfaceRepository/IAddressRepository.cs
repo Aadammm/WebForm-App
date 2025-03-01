@@ -10,7 +10,6 @@ namespace ProjektProgramia.DataAccess.InterfaceRepository
     public interface IAddressRepository
     {
         IEnumerable<Address> GetAddresses();
-      
         Address FindAddress(int addressId);
         bool RemoveAddress(Address address);
         bool SaveChanges();

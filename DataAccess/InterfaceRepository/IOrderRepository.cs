@@ -13,6 +13,6 @@ namespace ProjektProgramia.DataAccess.InterfaceRepository
         bool AddOrder(Order order);
         bool SaveChanges();
         IEnumerable<Order> GetOrders();
-
+        Product FindProduct(int productId);
     }
 }

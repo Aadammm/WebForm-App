@@ -6,13 +6,16 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ProjektProgramia.DataAccess;
+using ProjektProgramia.DataAccess.InterfaceRepository;
+using Newtonsoft.Json.Linq;
 
 namespace ProjektProgramia.Pages
 {
     public partial class EditProduct : System.Web.UI.Page
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
         private int? productId = null;
+        private ProductService productService;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
@@ -26,7 +29,7 @@ namespace ProjektProgramia.Pages
                 {
                     LoadProducts(productId.Value);
                     FormTitle.Text = "Edit product";
-                   Title = "Edit product";
+                    Title = "Edit product";
                 }
                 else
                 {
@@ -35,10 +38,15 @@ namespace ProjektProgramia.Pages
                 }
             }
         }
-
-        private void LoadProducts(int value)
+        protected void Page_Init(object sender, EventArgs eventArgs)
         {
-            var product = db.Products.Find(value);
+            productService = new ProductService(new ProductRepository(),
+                                                new OrderRepository());
+        }
+
+        private void LoadProducts(int productId)
+        {
+            var product = productService.FindProduct(productId);
             if (product != null)
             {
                 txtTitle.Text = product.Title;
@@ -49,28 +57,30 @@ namespace ProjektProgramia.Pages
 
         protected void AddProductButton_Click(object sender, EventArgs e)
         {
-            if (!decimal.TryParse(txtPrice.Text,out decimal price))
+            if (!decimal.TryParse(txtPrice.Text, out decimal price))
             {
-                
+
                 Response.Write("Must write number in correct format");
                 return;
             }
             Product product;
             if (productId.HasValue)
             {
-                product = db.Products.Find(productId.Value);
+                product = productService.FindProduct(productId.Value);
             }
             else
             {
                 product = new Product();
-                db.Products.Add(product);
+                productService.AddProducts(product);
             }
 
             product.Title = txtTitle.Text;
             product.Price = price;
-            db.SaveChanges();
-
-            Response.Write("Product added successfully!");
+            bool success = productService.SaveChanges();
+            if (success)
+            {
+                Response.Write("Product added successfully!");
+            }
             Response.Redirect("ProductsList.aspx");
         }
         protected void CancelButton_Click(object sender, EventArgs eventArgs)

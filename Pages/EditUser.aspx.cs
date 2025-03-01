@@ -52,35 +52,34 @@ namespace ProjektProgramia.Pages
             if (user != null)
             {
                 NameTextBox.Text = user.Name;
-                PostalCodeTextBox.Text = user.Address.PostalCode;
+                PostalCodeTextBox.Text = user.Address.PostalCode.ToString();
                 CityTextBox.Text = user.Address.City;
                 StreetTextBox.Text = user.Address.Street;
-                HouseNumberTextBox.Text = user.Address.HouseNumber;
+                HouseNumberTextBox.Text = user.Address.HouseNumber.ToString();
             }
         }
 
         protected void SaveButton_Click(object sender, EventArgs e)
         {
             User user;
-            Address address;
 
             if (userId.HasValue)
             {
                 user = userService.FindUser(userId.Value);                
-                user.Address.PostalCode = PostalCodeTextBox.Text;
+                user.Address.PostalCode = int.Parse(PostalCodeTextBox.Text);
                 user.Address.City = CityTextBox.Text;
                 user.Address.Street = StreetTextBox.Text;
-                user.Address.HouseNumber = HouseNumberTextBox.Text;
+                user.Address.HouseNumber = int.Parse(HouseNumberTextBox.Text);
             }
             else
             {
                 user = new User();
                 user.Address = new Address
                 {
-                    PostalCode = PostalCodeTextBox.Text,
+                    PostalCode = int.Parse(PostalCodeTextBox.Text),
                     City = CityTextBox.Text,
                     Street = StreetTextBox.Text,
-                    HouseNumber = HouseNumberTextBox.Text
+                    HouseNumber = int.Parse(HouseNumberTextBox.Text)
                 };
                 userService.AddUser(user);
             }
