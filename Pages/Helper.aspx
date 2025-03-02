@@ -6,7 +6,6 @@
 <head runat="server">
     <title>Helper</title>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -61,7 +60,9 @@
 </body>
 
 </html>
+
 <script>
+    src = "/js/myScript1.js"
     let button = document.getElementById("btn");
     button.addEventListener("click", function () {
         event.preventDefault();
@@ -69,6 +70,15 @@
             jsChangeLabel.innerText = "Text sa zmenil!";
         } else { jsChangeLabel.innerText = "Ahoj" }
     });
+
+    function sumMix(x) {
+        let result = 0;
+        x.forEach(element=>{
+            if (typeof element === "number")
+                result += element;
+        };
+        return result;
+    }
 </script>
 <style>
     .textBox {
@@ -116,7 +126,7 @@
         border: 1px solid red; /* Okraj (hrúbka, štýl, farba) */
         margin: auto; /* centruje automaticky do stredu*/
         text-align: center; /*centruje text do stredu*/
-        display: flex;/* Aktivuje Flexbox */
+        display: flex; /* Aktivuje Flexbox */
         justify-content: center; /* Horizontálne centrovanie */
         align-items: center; /* Vertikálne centrovanie */
         opacity: 0.5; /*prehliadnost*/
