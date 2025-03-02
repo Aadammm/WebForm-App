@@ -235,9 +235,9 @@
     <Compile Include="DataAccess\OrderRepository.cs" />
     <Compile Include="DataAccess\ProductRepository.cs" />
     <Compile Include="DataAccess\UserRepository.cs" />
-    <Compile Include="Migrations\202503010930464_ChangColumnTypeAndLength.cs" />
-    <Compile Include="Migrations\202503010930464_ChangColumnTypeAndLength.Designer.cs">
-      <DependentUpon>202503010930464_ChangColumnTypeAndLength.cs</DependentUpon>
+    <Compile Include="Migrations\202503020811448_InitialCreate.cs" />
+    <Compile Include="Migrations\202503020811448_InitialCreate.Designer.cs">
+      <DependentUpon>202503020811448_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Pages\AddressList.aspx.cs">
@@ -364,8 +364,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202503010930464_ChangColumnTypeAndLength.resx">
-      <DependentUpon>202503010930464_ChangColumnTypeAndLength.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202503020811448_InitialCreate.resx">
+      <DependentUpon>202503020811448_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

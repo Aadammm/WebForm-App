@@ -19,14 +19,8 @@ namespace ProjektProgramia.Pages
                 BindData();
             }
         }
-        public void Test()
-        {
-
-        }
-
         void BindData()
         {
-           
             LabelBind.Text = "LabelBind";
             LiteralBind.Text = "LiteralBind";
             PropertyName = "bindovanie cez property";

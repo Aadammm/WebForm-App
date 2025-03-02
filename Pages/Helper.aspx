@@ -14,9 +14,6 @@
             <a class="center-box" href="/Default.aspx"><strong>Back</strong> "href="/Default.aspx"</a>
         </div>
 
-
-
-
         <label>Bindovanie hodnot z kodu</label>
         <div>
             <asp:Label ID="LabelBind" runat="server" CssClass="userNameCell"></asp:Label>
@@ -32,7 +29,7 @@
             <label for="CityTextBox" class="form-label">Vlozeny text asp</label>
             <asp:TextBox ID="TextBox" runat="server" CssClass="textBox" placeholder="je pristupny v .cs"></asp:TextBox>
             <br />
-            <label for="textInput" class="form-label" >Textový vstup input:</label>
+            <label for="textInput" class="form-label">Textový vstup input:</label>
             <input type="text" class="textBox" id="textInput" name="textInput" placeholder="Neni pristupny v .cs" />
             <br />
         </div>
@@ -53,13 +50,25 @@
         <div class="box-box">
             #
         </div>
+
+        <div>
+            <label id="jsChangeLabel" for="btn">Ahoj</label>
+            <br />
+            <button id="btn" class="btn btn-primary mb-3">Button</button>
+        </div>
     </form>
 
 </body>
 
 </html>
 <script>
-
+    let button = document.getElementById("btn");
+    button.addEventListener("click", function () {
+        event.preventDefault();
+        if (jsChangeLabel.innerText === "Ahoj") {
+            jsChangeLabel.innerText = "Text sa zmenil!";
+        } else { jsChangeLabel.innerText = "Ahoj" }
+    });
 </script>
 <style>
     .textBox {
@@ -107,6 +116,9 @@
         border: 1px solid red; /* Okraj (hrúbka, štýl, farba) */
         margin: auto; /* centruje automaticky do stredu*/
         text-align: center; /*centruje text do stredu*/
+        display: flex;/* Aktivuje Flexbox */
+        justify-content: center; /* Horizontálne centrovanie */
+        align-items: center; /* Vertikálne centrovanie */
         opacity: 0.5; /*prehliadnost*/
     }
 </style>

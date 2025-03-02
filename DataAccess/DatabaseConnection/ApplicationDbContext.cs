@@ -9,7 +9,7 @@ namespace ProjektProgramia.Services
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public ApplicationDbContext() : base("name=ConnectionString")
+        public ApplicationDbContext() : base("name=MyLocalDbContext")
         {
 
         }
