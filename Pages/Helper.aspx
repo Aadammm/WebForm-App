@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Helper</title>
-     <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
@@ -14,11 +14,7 @@
             <a class="center-box" href="/Default.aspx"><strong>Back</strong> "href="/Default.aspx"</a>
         </div>
 
-        <div class="form-group">
-            <label for="text-input">Textový vstup:</label>
-            <input type="text" id="textInput" name="text-input" placeholder="Zadajte text" />
-            <small>Základné jednoriadkové textové pole.</small>
-        </div>
+
 
 
         <label>Bindovanie hodnot z kodu</label>
@@ -33,15 +29,21 @@
 
         <label>Nacitanie dat zo stranky do kodu</label>
         <div>
-            <label for="CityTextBox" class="form-label">Vlozeny text</label>
-            <asp:TextBox ID="TextBox" runat="server" CssClass="textBox"></asp:TextBox>
+            <label for="CityTextBox" class="form-label">Vlozeny text asp</label>
+            <asp:TextBox ID="TextBox" runat="server" CssClass="textBox" placeholder="je pristupny v .cs"></asp:TextBox>
+            <br />
+            <label for="textInput" class="form-label" >Textový vstup input:</label>
+            <input type="text" class="textBox" id="textInput" name="textInput" placeholder="Neni pristupny v .cs" />
+            <br />
         </div>
-        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="false" BorderWidth="1px" 
-            CssClass = "table table-striped">
+
+
+        <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="false" BorderWidth="1px"
+            CssClass="table table-striped">
             <Columns>
-                <asp:BoundField DataField="Id" HeaderText="Poradie"/>
-                <asp:BoundField DataField="Row1" HeaderText="Stlpec1"/>
-                <asp:BoundField DataField="Row2" HeaderText="Stlpec2"/>
+                <asp:BoundField DataField="Id" HeaderText="Poradie" />
+                <asp:BoundField DataField="Row1" HeaderText="Stlpec1" />
+                <asp:BoundField DataField="Row2" HeaderText="Stlpec2" />
             </Columns>
         </asp:GridView>
 
@@ -56,7 +58,9 @@
 </body>
 
 </html>
+<script>
 
+</script>
 <style>
     .textBox {
         border-radius: 5px; /*zaoblenie rohov do asp sa vklada cez CssClass=""*/

@@ -17,59 +17,54 @@ namespace ProjektProgramia.Services
         {
             connString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
         }
-        public void Get()
+        public void Read()
         {
             using (IDbConnection db = new SqlConnection(connString))
             {
-                var x = db.Query<User>("select * from dbo.Users");
+                int userId = 1;
+                User user = db.QueryFirstOrDefault<User>("select * from dbo.Users where id=@id", new { userId });
+
+                IEnumerable<User> users = db.Query<User>("select * from users where Id>@Id", new { iD = 1 });
             }
         }
-        public IEnumerable<Product> ZiskatVsetkyProdukty()
+        public int Insert()
         {
             using (IDbConnection db = new SqlConnection(connString))
             {
-                return db.Query<Product>("SELECT Id, Nazov, Cena FROM Produkty");
+                User user = new User()
+                {
+                    Name = "USER",
+                    AddressId = 1
+                };
+                string insertQql = "INSERT INTO Users (Name, AddressId) VALUES (@Name, @AddressId)";
+                int rowsAffected = db.Execute(insertQql, user);
+                return rowsAffected;
             }
         }
 
-        // Získanie jedného záznamu
-        public Product ZiskatProduktPodlaId(int id)
+        public int Update(int id)
         {
             using (IDbConnection db = new SqlConnection(connString))
             {
-                return db.QuerySingleOrDefault<Product>("SELECT Id, Nazov, Cena FROM Produkty WHERE Id = @Id", new { Id = id });
+                User userToUpdate = new User()
+                {
+                    Id = id,
+                    Name = "UPDATED USER",
+                    AddressId = 2
+                };
+                string updateSql = "UPDATE Users SET Name = @Name, AddressId = @AddressId WHERE Id = @Id";
+                int rowsAffected = db.Execute(updateSql, userToUpdate);
+                return rowsAffected;
             }
         }
 
-        // Vloženie záznamu
-        public int PridatProdukt(Product produkt)
+        public int Delete(int userId)
         {
             using (IDbConnection db = new SqlConnection(connString))
             {
-                string sql = "INSERT INTO Produkty (Nazov, Cena) VALUES (@Nazov, @Cena); SELECT CAST(SCOPE_IDENTITY() as int)";
-                return db.Query<int>(sql, produkt).Single();
-            }
-        }
-
-        // Aktualizácia záznamu
-        public bool AktualizovatProdukt(Product produkt)
-        {
-            using (IDbConnection db = new SqlConnection(connString))
-            {
-                string sql = "UPDATE Produkty SET Nazov = @Nazov, Cena = @Cena WHERE Id = @Id";
-                int rows = db.Execute(sql, produkt);
-                return rows > 0;
-            }
-        }
-
-        // Odstránenie záznamu
-        public bool OdstranitProdukt(int id)
-        {
-            using (IDbConnection db = new SqlConnection(connString))
-            {
-                string sql = "DELETE FROM Produkty WHERE Id = @Id";
-                int rows = db.Execute(sql, new { Id = id });
-                return rows > 0;
+                string deleteSql = "DELETE FROM Users WHERE Id = @Id";
+                int rowsAffected = db.Execute(deleteSql, userId);
+                return rowsAffected;
             }
         }
     }

@@ -26,6 +26,7 @@ namespace ProjektProgramia.Pages
 
         void BindData()
         {
+           
             LabelBind.Text = "LabelBind";
             LiteralBind.Text = "LiteralBind";
             PropertyName = "bindovanie cez property";
