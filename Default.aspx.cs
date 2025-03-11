@@ -29,12 +29,12 @@ namespace ProjektProgramia
         {
             List<User> clients = userService.GetUsers().ToList();
 
-            ClientsGridView.DataSource = clients;
-            ClientsGridView.DataBind();
+            UsersGridView.DataSource = clients;
+            UsersGridView.DataBind();
         }
-        protected void ClientsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void UsersGridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int userId = Convert.ToInt32(e.CommandArgument); // Získanie ID z riadka
+            int userId = Convert.ToInt32(e.CommandArgument);
             if (e.CommandName == "ShowOrders")
             {
                 Response.Redirect($"Pages/OrdersList.aspx?id={userId}");

@@ -15,13 +15,13 @@ namespace ProjektProgramia
     {
 
         /// <summary>
-        /// ClientsGridView control.
+        /// UsersGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ClientsGridView;
+        protected global::System.Web.UI.WebControls.GridView UsersGridView;
 
         /// <summary>
         /// AddNewClientButton control.

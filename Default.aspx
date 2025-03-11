@@ -18,10 +18,9 @@
             </div>
         </nav>
 
-
          <h2>Users List</h2>
-        <asp:GridView ID="ClientsGridView" runat="server" AutoGenerateColumns="False"
-            CssClass="table table-striped" OnRowCommand="ClientsGridView_RowCommand">
+        <asp:GridView ID="UsersGridView" runat="server" AutoGenerateColumns="False"
+            CssClass="table table-striped" OnRowCommand="UsersGridView_RowCommand">
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="ID" />
                 <asp:BoundField DataField="Name" HeaderText="Name" />
