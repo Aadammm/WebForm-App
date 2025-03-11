@@ -16,7 +16,7 @@ This project is a simple web application built with ASP.NET WebForms. It serves 
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6f5ceff9-3af1-431d-a078-e02bac65aba0" height="200px" width="30%" />
-  <img src="https://github.com/user-attachments/assets/20861eff-07e5-497e-a7a2-258ef9305dac" height="200px" width="30%" />
-  <img src="https://github.com/user-attachments/assets/acf10016-e8ec-4e0b-b8fe-8517c8bffa49" height="200px" width="30%" />
+  <img src="https://github.com/user-attachments/assets/6f5ceff9-3af1-431d-a078-e02bac65aba0" height="150px" width="30%" />
+  <img src="https://github.com/user-attachments/assets/20861eff-07e5-497e-a7a2-258ef9305dac" height="150px" width="30%" />
+  <img src="https://github.com/user-attachments/assets/acf10016-e8ec-4e0b-b8fe-8517c8bffa49" height="150px" width="30%" />
 </p>
