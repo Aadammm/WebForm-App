@@ -17,8 +17,10 @@ This project is a simple web application built with ASP.NET WebForms. It serves 
 ![Screenshot 2025-03-11 093914](https://github.com/user-attachments/assets/20861eff-07e5-497e-a7a2-258ef9305dac)
 ![Screenshot 2025-03-11 093919](https://github.com/user-attachments/assets/acf10016-e8ec-4e0b-b8fe-8517c8bffa49)
 
+
+
 <p align="center">
-  <img src="[https://link_to_image1.com](https://github.com/user-attachments/assets/6f5ceff9-3af1-431d-a078-e02bac65aba0)" width="30%" />
-  <img src="[https://link_to_image2.com](https://github.com/user-attachments/assets/20861eff-07e5-497e-a7a2-258ef9305dac)" width="30%" />
-  <img src="[https://link_to_image3.com](https://github.com/user-attachments/assets/acf10016-e8ec-4e0b-b8fe-8517c8bffa49)" width="30%" />
+  <img src="https://github.com/user-attachments/assets/6f5ceff9-3af1-431d-a078-e02bac65aba0" width="30%" />
+  <img src="https://github.com/user-attachments/assets/20861eff-07e5-497e-a7a2-258ef9305dac" width="30%" />
+  <img src="https://github.com/user-attachments/assets/acf10016-e8ec-4e0b-b8fe-8517c8bffa49" width="30%" />
 </p>
