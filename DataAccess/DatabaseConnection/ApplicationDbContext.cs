@@ -1,7 +1,7 @@
-﻿using ProjektProgramia.Models;
+﻿using WebForms.Models;
 using System.Data.Entity;
 
-namespace ProjektProgramia.Services
+namespace WebForms.Services
 {
     public class ApplicationDbContext : DbContext
     {
@@ -15,26 +15,23 @@ namespace ProjektProgramia.Services
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>()            //1:N
-              .HasRequired(u => u.Address)        //kazdy user ma addressu
-              .WithMany()                        //Jedna adresa môže mať viacero používateľov
+            modelBuilder.Entity<User>()         
+              .HasRequired(u => u.Address)      
+              .WithMany()                       
               .HasForeignKey(u => u.AddressId);
 
 
             modelBuilder.Entity<Order>()
-                .HasRequired(o => o.User)          // Každá objednávka má používateľa
-                .WithMany(u => u.Orders)           // Používateľ môže mať viac objednávok
-                .HasForeignKey(o => o.UserId);     // Cudzí kľúč je UserId v Order
+                .HasRequired(o => o.User)       
+                .WithMany(u => u.Orders)        
+                .HasForeignKey(o => o.UserId);
 
 
             modelBuilder.Entity<Order>()
-                .HasRequired(oi => oi.Product)      // Každá položka objednávky má produkt
-                .WithMany()                         // Produkt môže byť v mnohých položkách
-                .HasForeignKey(oi => oi.ProductId); // Cudzí kľúč je ProductId v OrderItem
+                .HasRequired(oi => oi.Product)
+                .WithMany()
+                .HasForeignKey(oi => oi.ProductId);
 
-            //modelBuilder.Entity<User>()
-            //    .HasMany(u => u.Orders)
-            //    .WithMany(o => o.Users);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjektProgramia.Pages
+namespace WebForms.Pages
 {
     public partial class Contact : Page
     {

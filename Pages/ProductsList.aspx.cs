@@ -1,15 +1,15 @@
-﻿using ProjektProgramia.Services;
-using ProjektProgramia.Models;
+﻿using WebForms.Services;
+using WebForms.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ProjektProgramia.DataAccess.InterfaceRepository;
-using ProjektProgramia.DataAccess;
+using WebForms.DataAccess.InterfaceRepository;
+using WebForms.DataAccess;
 
-namespace ProjektProgramia.Pages
+namespace WebForms.Pages
 {
     public partial class ProductsList : System.Web.UI.Page
     {

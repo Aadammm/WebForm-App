@@ -1,13 +1,13 @@
-﻿using ProjektProgramia.DataAccess.InterfaceRepository;
-using ProjektProgramia.Models;
-using ProjektProgramia.Services;
+﻿using WebForms.DataAccess.InterfaceRepository;
+using WebForms.Models;
+using WebForms.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 
-namespace ProjektProgramia.DataAccess
+namespace WebForms.DataAccess
 {
     public class OrderRepository : IOrderRepository
     {

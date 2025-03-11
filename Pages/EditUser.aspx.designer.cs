@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjektProgramia.Pages
+namespace WebForms.Pages
 {
 
 

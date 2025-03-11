@@ -1,6 +1,6 @@
 ﻿using Dapper;
-using ProjektProgramia.DataAccess;
-using ProjektProgramia.Services;
+using WebForms.DataAccess;
+using WebForms.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -12,7 +12,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjektProgramia.Pages
+namespace WebForms.Pages
 {
     public partial class OrdersList : System.Web.UI.Page
     {

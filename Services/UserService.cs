@@ -1,6 +1,6 @@
-﻿using ProjektProgramia.DataAccess;
-using ProjektProgramia.DataAccess.InterfaceRepository;
-using ProjektProgramia.Models;
+﻿using WebForms.DataAccess;
+using WebForms.DataAccess.InterfaceRepository;
+using WebForms.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls.WebParts;
 
-namespace ProjektProgramia.Services
+namespace WebForms.Services
 {
     public class UserService
     {

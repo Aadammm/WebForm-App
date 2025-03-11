@@ -1,5 +1,5 @@
-﻿using ProjektProgramia.DataAccess;
-using ProjektProgramia.Services;
+﻿using WebForms.DataAccess;
+using WebForms.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ProjektProgramia.Pages
+namespace WebForms.Pages
 {
     public partial class AddressList : System.Web.UI.Page
     {

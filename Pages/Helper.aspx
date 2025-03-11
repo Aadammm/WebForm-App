@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Helper.aspx.cs" Inherits="ProjektProgramia.Pages.Helper" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Helper.aspx.cs" Inherits="WebForms.Pages.Helper" %>
 
 <!DOCTYPE html>
 

@@ -1,5 +1,5 @@
-﻿using ProjektProgramia.Services;
-using ProjektProgramia.Models;
+﻿using WebForms.Services;
+using WebForms.Models;
 using System;
 using System.Data.Entity;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ProjektProgramia.DataAccess;
+using WebForms.DataAccess;
 
-namespace ProjektProgramia
+namespace WebForms
 {
     public partial class _Default : Page
     {

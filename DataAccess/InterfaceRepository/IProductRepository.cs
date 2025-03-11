@@ -1,8 +1,8 @@
-﻿using ProjektProgramia.Models;
+﻿using WebForms.Models;
 using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace ProjektProgramia.DataAccess.InterfaceRepository
+namespace WebForms.DataAccess.InterfaceRepository
 {
     public interface IProductRepository
     {

@@ -1,13 +1,13 @@
-﻿using ProjektProgramia.DataAccess;
-using ProjektProgramia.DataAccess.InterfaceRepository;
-using ProjektProgramia.Models;
+﻿using WebForms.DataAccess;
+using WebForms.DataAccess.InterfaceRepository;
+using WebForms.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace ProjektProgramia.Services
+namespace WebForms.Services
 {
 	public class AddressService
 	{

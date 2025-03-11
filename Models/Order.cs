@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace ProjektProgramia.Models
+namespace WebForms.Models
 {
     public class Order
     {

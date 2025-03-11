@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProjektProgramia {
+namespace WebForms {
     
     
     public partial class ViewSwitcher {

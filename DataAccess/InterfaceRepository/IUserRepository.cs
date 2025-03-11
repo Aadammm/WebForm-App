@@ -1,11 +1,11 @@
-﻿using ProjektProgramia.Models;
+﻿using WebForms.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjektProgramia.DataAccess.InterfaceRepository
+namespace WebForms.DataAccess.InterfaceRepository
 {
     public interface IUserRepository
     {

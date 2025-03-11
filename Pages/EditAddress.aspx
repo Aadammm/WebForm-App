@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditAddress.aspx.cs" Inherits="ProjektProgramia.Pages.EditAddress" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditAddress.aspx.cs" Inherits="WebForms.Pages.EditAddress" %>
 
 
 <!DOCTYPE html>

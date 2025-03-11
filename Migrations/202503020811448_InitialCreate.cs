@@ -1,4 +1,4 @@
-﻿namespace ProjektProgramia.Migrations
+﻿namespace WebForms.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

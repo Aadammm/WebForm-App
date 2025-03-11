@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using ProjektProgramia.Models;
+using WebForms.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace ProjektProgramia.Services
+namespace WebForms.Services
 {
     public class DapperDb
     {
